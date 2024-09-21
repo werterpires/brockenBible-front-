@@ -1,0 +1,39 @@
+.alert-container {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  z-index: 9999;
+  transition: all 0.3s ease-in-out;
+  border-radius: 5px;
+}
+
+.error {
+  background-color: var(--danger);
+}
+
+.info {
+  background-color: var(--info);
+}
+
+.success {
+  background-color: var(--success);
+}
+
+.warning {
+  background-color: var(--warning);
+}
+
+.alert-message-container {
+  padding: 10px;
+  color: var(--dark-text);
+}
+
+.alert-title {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: bold;
+}
+
+.alert-description {
+  font-family: "Noto Sans", sans-serif;
+  display: block;
+}

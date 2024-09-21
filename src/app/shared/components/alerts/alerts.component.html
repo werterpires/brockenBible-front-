@@ -1,0 +1,13 @@
+<ng-container *ngIf="alert.show">
+  <div class="alert-container" [ngClass]="alert.type">
+    <div class="alert-message-container">
+      <p class="alert-title">{{ alert.title }}</p>
+      <span
+        *ngFor="let description of alert.description"
+        class="alert-description"
+      >
+        {{ description }}
+      </span>
+    </div>
+  </div>
+</ng-container>
