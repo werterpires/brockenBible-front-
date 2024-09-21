@@ -2,7 +2,7 @@ export type Testament = 'Antigo' | 'Novo';
 export interface CreateBook {
   bookAbbr: string;
   bookCompleteName: string;
-  BookReducedName: string;
+  bookReducedName: string;
   testament: Testament;
 }
 

@@ -18,14 +18,14 @@ export class booksComponent {
   createBookData: CreateBook = {
     bookAbbr: '',
     bookCompleteName: '',
-    BookReducedName: '',
+    bookReducedName: '',
     testament: 'Novo',
   };
   selectedBook: Livro | undefined;
   paginator: Paginator = {
     limit: 10,
     offset: 0,
-    orderBy: 'posicao_livro',
+    orderBy: 'book_position',
     direction: 'asc',
   };
 
@@ -87,7 +87,7 @@ export class booksComponent {
       bookId: this.selectedBook.bookId,
       bookAbbr: this.selectedBook.bookAbbr,
       bookCompleteName: this.selectedBook.bookCompleteName,
-      BookReducedName: this.selectedBook.BookReducedName,
+      bookReducedName: this.selectedBook.bookReducedName,
       testament: this.selectedBook.testament,
     };
     this.booksService.updateBook(dadosAtualizarLivro).subscribe({
