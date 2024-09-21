@@ -20,25 +20,25 @@ export class GlobalErrorHandlerService extends ErrorHandler {
 
   showError(title: string, message: string[]): void {
     this.alert = { ...this.alert, title, description: message };
+    this.alertsService.show(this.alert);
   }
 
   override handleError(error: any): void {
     if (error instanceof HttpErrorResponse) {
       if (error.status === 0) {
         this.showError('Erro de conexão', [
-          'Não foi possível conectar ao servidor',
+          'Não foi poss vel conectar ao servidor',
         ]);
         return;
       }
 
       if (error.error.message && error.error.message[0] === '#') {
-        this.showError('Ocorreu um erro', [error.error.message.split('#')]);
+        this.showError('Ocorreu um erro', [error.error.message.split('#')[1]]);
         return;
       } else {
         this.showError('Ocorreu um erro', ['ocorreu um erro inesperado']);
       }
     } else {
-      console.log('Erro ainda não tratado', error);
       this.showError('Ocorreu um erro', ['ocorreu um erro inesperado']);
     }
   }

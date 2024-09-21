@@ -19,12 +19,10 @@ export class AlertsService {
     show: false,
   };
 
+  counter: number = 0;
+
   show(alert: Alert) {
     this.showSubsject.next(alert);
-
-    setTimeout(() => {
-      this.hide();
-    }, 10000);
   }
 
   hide() {

@@ -7,7 +7,6 @@ import { GlobalErrorHandlerService } from './shared/services/global-error-handle
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, AlertsComponent],
-  providers: [{ provide: ErrorHandler, useClass: GlobalErrorHandlerService }],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
