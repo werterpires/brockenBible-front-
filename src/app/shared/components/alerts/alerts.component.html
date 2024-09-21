@@ -1,5 +1,6 @@
 <ng-container *ngIf="alert.show">
   <div class="alert-container" [ngClass]="alert.type">
+    <button (click)="hide()" class="close-button">Fechar</button>
     <div class="alert-message-container">
       <p class="alert-title">{{ alert.title }}</p>
       <span

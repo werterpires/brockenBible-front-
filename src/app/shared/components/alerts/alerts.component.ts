@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Alert } from './types';
+import { AlertsService } from './alerts.service';
 
 @Component({
   selector: 'app-alerts',
@@ -19,4 +20,14 @@ export class AlertsComponent {
     ],
     show: true,
   };
+
+  constructor(private readonly alertsService: AlertsService) {
+    this.alertsService.show$.subscribe((show) => {
+      this.alert.show = show;
+    });
+  }
+
+  hide() {
+    this.alertsService.hide();
+  }
 }
