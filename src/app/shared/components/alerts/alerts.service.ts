@@ -1,15 +1,26 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { Alert } from './types';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AlertsService {
-  showSubsject: Subject<boolean> = new Subject<boolean>();
+  showSubsject: Subject<Alert> = new Subject<Alert>();
   show$ = this.showSubsject.asObservable();
 
-  show() {
-    this.showSubsject.next(true);
+  initialAlert: Alert = {
+    type: 'info',
+    title: 'O arroz está quente',
+    description: [
+      'Uma informação muito importante',
+      'Outra informação muito importante',
+    ],
+    show: false,
+  };
+
+  show(alert: Alert) {
+    this.showSubsject.next(alert);
 
     setTimeout(() => {
       this.hide();
@@ -17,6 +28,6 @@ export class AlertsService {
   }
 
   hide() {
-    this.showSubsject.next(false);
+    this.showSubsject.next(this.initialAlert);
   }
 }

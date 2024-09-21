@@ -18,12 +18,12 @@ export class AlertsComponent {
       'Uma informação muito importante',
       'Outra informação muito importante',
     ],
-    show: true,
+    show: false,
   };
 
   constructor(private readonly alertsService: AlertsService) {
-    this.alertsService.show$.subscribe((show) => {
-      this.alert.show = show;
+    this.alertsService.show$.subscribe((alert) => {
+      this.alert = alert;
     });
   }
 
