@@ -32,13 +32,18 @@ export class GlobalErrorHandlerService extends ErrorHandler {
         return;
       }
 
-      if (error.error.message && error.error.message[0] === '#') {
-        this.showError('Ocorreu um erro', [error.error.message.split('#')[1]]);
+      if (error.error.error.message && error.error.error.message[0] === '#') {
+        this.showError('Ocorreu um erro', [
+          error.error.error.message.split('#')[1],
+        ]);
         return;
       } else {
+        console.error('Erro de Joaquim:', error);
+
         this.showError('Ocorreu um erro', ['ocorreu um erro inesperado']);
       }
     } else {
+      console.error('Erro de Joaquim:', error);
       this.showError('Ocorreu um erro', ['ocorreu um erro inesperado']);
     }
   }

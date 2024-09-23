@@ -32,18 +32,16 @@ export class booksComponent {
   constructor(private readonly booksService: BooksService) {}
 
   ngOnInit() {
-    this.obterbooks();
+    this.getBooks();
   }
 
-  obterbooks() {
-    this.booksService.obterbooks(this.paginator).subscribe({
+  getBooks() {
+    this.booksService.getBooks(this.paginator).subscribe({
       next: (books) => {
         this.books = books;
-
-        console.log(books);
       },
       error: (error) => {
-        console.log(error);
+        throw error;
       },
     });
   }
@@ -51,32 +49,26 @@ export class booksComponent {
   deletarLivro(idLivro: number) {
     this.booksService.deletarLivro(idLivro).subscribe({
       next: () => {
-        this.obterbooks();
+        this.getBooks();
       },
       error: (error) => {
-        console.log(error);
+        throw error;
       },
     });
   }
 
-  obterLivro(idLivro: number) {
-    this.booksService.obterLivro(idLivro).subscribe({
-      next: (livro) => {
-        console.log(livro);
-      },
-      error: (error) => {
-        console.log(error);
-      },
+  getBook(bookId: number) {
+    this.booksService.obterLivro(bookId).subscribe({
+      next: (livro) => {},
+      error: (error) => {},
     });
   }
 
-  criarLivro() {
+  createBook() {
     this.booksService.createBook(this.createBookData).subscribe({
-      next: (livro) => {
-        console.log(livro);
-      },
+      next: (livro) => {},
       error: (error) => {
-        console.log(error);
+        throw error;
       },
     });
   }
@@ -92,16 +84,13 @@ export class booksComponent {
     };
     this.booksService.updateBook(dadosAtualizarLivro).subscribe({
       next: (livro) => {
-        console.log(livro);
         this.selectedBook = undefined;
         const index = this.books.findIndex(
           (livro) => livro.bookId === dadosAtualizarLivro.bookId
         );
         this.books[index] = livro;
       },
-      error: (error) => {
-        console.log(error);
-      },
+      error: (error) => {},
     });
   }
 }

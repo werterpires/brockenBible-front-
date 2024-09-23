@@ -15,7 +15,6 @@ export class BooksService {
       .post<Livro>('http://localhost:3000/books', createBookData)
       .pipe(
         catchError((error: HttpErrorResponse) => {
-          console.log(error.error.message);
           return throwError(() => new HttpErrorResponse(error.error.message));
         })
       );
@@ -29,21 +28,19 @@ export class BooksService {
       )
       .pipe(
         catchError((error: HttpErrorResponse) => {
-          console.log(error.error.message);
           return throwError(() => new HttpErrorResponse(error.error.message));
         })
       );
   }
 
-  obterbooks(paginator: Paginator): Observable<Livro[]> {
+  getBooks(paginator: Paginator): Observable<Livro[]> {
     return this.httpClient
       .get<Livro[]>(
         `http://localhost:3000/books/${paginator.offset}/${paginator.limit}/${paginator.orderBy}/${paginator.direction}`
       )
       .pipe(
         catchError((error: HttpErrorResponse) => {
-          console.log('Erro de Joaquim', error);
-          return throwError(() => new HttpErrorResponse(error.error.message));
+          return throwError(() => error);
         })
       );
   }
@@ -53,7 +50,6 @@ export class BooksService {
       .get<Livro>(`http://localhost:3000/books/${bookId}`)
       .pipe(
         catchError((error: HttpErrorResponse) => {
-          console.log(error.error.message);
           return throwError(() => new HttpErrorResponse(error.error.message));
         })
       );
@@ -64,7 +60,6 @@ export class BooksService {
       .delete<void>(`http://localhost:3000/books/${bookId}`)
       .pipe(
         catchError((error: HttpErrorResponse) => {
-          console.log(error.error.message);
           return throwError(() => new HttpErrorResponse(error.error.message));
         })
       );
