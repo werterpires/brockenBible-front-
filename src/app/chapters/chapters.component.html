@@ -1,0 +1,12 @@
+<div class="chapters">
+  <div *ngFor="let chapter of chapters" class="chapter">
+    <p class="chapter-number" (click)="selectChapter(chapter)">
+      {{ chapter.chapterNumber }}: {{ chapter.chapterSummary }}
+    </p>
+    <ng-container *ngIf="selectedChapter?.chapterId === chapter.chapterId">
+      <ng-container *ngIf="chapter.verses">
+        <app-verses [verses]="chapter.verses"></app-verses>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>
