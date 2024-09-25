@@ -1,11 +1,12 @@
-.livros {
+.books {
   display: flex;
+  flex-direction: column;
   gap: 30px;
   flex-wrap: wrap;
   padding: 15px;
 }
 
-.livro {
+.book {
   padding: 20px;
   background-color: #c2a3a3;
   border-radius: 5px;
@@ -13,6 +14,6 @@
   cursor: pointer;
 }
 
-.livro:hover {
-  scale: 1.05;
+.book:hover {
+  background-color: #c48484;
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { UpdateBook, CreateBook, Livro } from './types';
+import { UpdateBook, CreateBook, Book } from './types';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
 import { Paginator } from '../shared/types';
@@ -10,9 +10,9 @@ import { Paginator } from '../shared/types';
 export class BooksService {
   constructor(private readonly httpClient: HttpClient) {}
 
-  createBook(createBookData: CreateBook): Observable<Livro> {
+  createBook(createBookData: CreateBook): Observable<Book> {
     return this.httpClient
-      .post<Livro>('http://localhost:3000/books', createBookData)
+      .post<Book>('http://localhost:3000/books', createBookData)
       .pipe(
         catchError((error: HttpErrorResponse) => {
           return throwError(() => new HttpErrorResponse(error.error.message));
@@ -20,9 +20,9 @@ export class BooksService {
       );
   }
 
-  updateBook(updateBookData: UpdateBook): Observable<Livro> {
+  updateBook(updateBookData: UpdateBook): Observable<Book> {
     return this.httpClient
-      .put<Livro>(
+      .put<Book>(
         `http://localhost:3000/books/${updateBookData.bookId}`,
         updateBookData
       )
@@ -33,9 +33,9 @@ export class BooksService {
       );
   }
 
-  getBooks(paginator: Paginator): Observable<Livro[]> {
+  getBooks(paginator: Paginator): Observable<Book[]> {
     return this.httpClient
-      .get<Livro[]>(
+      .get<Book[]>(
         `http://localhost:3000/books/${paginator.offset}/${paginator.limit}/${paginator.orderBy}/${paginator.direction}`
       )
       .pipe(
@@ -45,9 +45,9 @@ export class BooksService {
       );
   }
 
-  obterLivro(bookId: number): Observable<Livro> {
+  obterLivro(bookId: number): Observable<Book> {
     return this.httpClient
-      .get<Livro>(`http://localhost:3000/books/${bookId}`)
+      .get<Book>(`http://localhost:3000/books/${bookId}`)
       .pipe(
         catchError((error: HttpErrorResponse) => {
           return throwError(() => new HttpErrorResponse(error.error.message));
@@ -61,6 +61,16 @@ export class BooksService {
       .pipe(
         catchError((error: HttpErrorResponse) => {
           return throwError(() => new HttpErrorResponse(error.error.message));
+        })
+      );
+  }
+
+  getChaptersByBookId(bookId: number): Observable<any> {
+    return this.httpClient
+      .get<any>(`http://localhost:3000/chapters/book/${bookId}/chapter_number`)
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          return throwError(() => error);
         })
       );
   }

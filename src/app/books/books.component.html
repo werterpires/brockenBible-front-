@@ -1,5 +1,11 @@
-<div class="livros">
-  <div *ngFor="let livro of books" class="livro">
-    {{ livro.bookReducedName }}
+<div class="books">
+  <div *ngFor="let book of books" class="book">
+    <p (click)="selectBook(book)">{{ book.bookCompleteName }}</p>
+
+    <ng-container *ngIf="selectedBook?.bookId === book.bookId">
+      <ng-container *ngIf="book.chapters">
+        <app-chapters [chapters]="book.chapters"></app-chapters>
+      </ng-container>
+    </ng-container>
   </div>
 </div>
