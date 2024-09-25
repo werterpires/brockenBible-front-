@@ -12,7 +12,9 @@
   --warning: #ffc107;
   --info: #6ea5ad;
   --light: #f8f9fa;
+  --light-hover: #9fa6ad;
   --dark: #343a40;
+  --dark-hover: #2a3947;
   --breakpoint-xs: 0;
   --breakpoint-sm: 576px;
   --breakpoint-md: 768px;
