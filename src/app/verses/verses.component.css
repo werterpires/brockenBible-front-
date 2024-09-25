@@ -1,0 +1,27 @@
+.verses {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 10px;
+}
+
+.verse {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 5px;
+
+  background-color: var(--light);
+  color: var(--dark-text);
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  transition: 0.3s ease-in-out all;
+  line-height: 19px;
+}
+
+.verse:hover {
+  background-color: var(--light-hover);
+}
