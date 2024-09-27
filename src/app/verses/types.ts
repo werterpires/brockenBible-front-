@@ -1,20 +1,13 @@
 import { Chapter } from '../chapters/types';
+import { VerseOnVersion } from '../verses-on-versions/types';
 
 export interface Verse {
   verseId: number;
   chapterId: number;
   verseNumber: number;
+  verseTranslation: string;
   chapter?: Chapter;
   verseOnVersions?: VerseOnVersion[];
-}
-
-export interface VerseOnVersion {
-  verseOnVersionId: number;
-  verseId: number;
-  versionId: number;
-  verseText: string;
-  version?: Version;
-  verse?: Verse;
 }
 
 export interface Version {

@@ -1,7 +1,14 @@
 <div class="verses">
   <div class="verse" *ngFor="let verse of verses">
-    <p class="verse-number">
-      {{ verse.verseNumber }}
+    <p class="verse-number" (click)="selectVerse(verse)">
+      {{ verse.verseNumber }}: {{ verse.verseTranslation }}
     </p>
+    <ng-container *ngIf="selectedVerse?.verseId === verse.verseId">
+      <ng-container *ngIf="verse.verseOnVersions">
+        <app-verses-on-versions
+          [versesOnVersions]="verse.verseOnVersions"
+        ></app-verses-on-versions>
+      </ng-container>
+    </ng-container>
   </div>
 </div>

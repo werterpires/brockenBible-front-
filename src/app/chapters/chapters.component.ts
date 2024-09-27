@@ -26,8 +26,6 @@ export class ChaptersComponent {
       next: (verses) => {
         chapter.verses = verses;
         this.selectedChapter = chapter;
-        console.log(this.selectedChapter);
-        console.log(chapter);
       },
       error: (error) => {
         throw error;
