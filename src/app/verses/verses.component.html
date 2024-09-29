@@ -9,6 +9,11 @@
           [versesOnVersions]="verse.verseOnVersions"
         ></app-verses-on-versions>
       </ng-container>
+      <ng-container *ngIf="verse.propositions">
+        <app-propositions
+          [propositions]="verse.propositions"
+        ></app-propositions>
+      </ng-container>
     </ng-container>
   </div>
 </div>

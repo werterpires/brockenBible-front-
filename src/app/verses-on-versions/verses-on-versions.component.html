@@ -1,6 +1,7 @@
 <div class="verses-on-versions">
+  <h1>Texto em outras versões</h1>
   <div class="verse-on-version" *ngFor="let verseOnVersion of versesOnVersions">
-    <p>
+    <p class="verse-on-version-text">
       {{ verseOnVersion.verseText }} (
       {{ verseOnVersion.version?.versionAbbr }} )
     </p>
