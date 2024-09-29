@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
 import { VerseOnVersion } from '../verses-on-versions/types';
 import { Proposition } from '../propositions/types';
+import { PropositionOnVerse } from '../propositions-on-verses/types';
 
 @Injectable({
   providedIn: 'root',
@@ -22,10 +23,12 @@ export class VersesService {
       );
   }
 
-  getPropositionsByVerseId(verseId: number): Observable<Proposition[]> {
+  getPropositionsOnVersesByVerseId(
+    verseId: number
+  ): Observable<PropositionOnVerse[]> {
     return this.httpClient
-      .get<Proposition[]>(
-        `http://localhost:3000/propositions/verse/${verseId}/proposition_id`
+      .get<PropositionOnVerse[]>(
+        `http://localhost:3000/propositions-on-verses/verse/${verseId}/proposition_text`
       )
       .pipe(
         catchError((error: HttpErrorResponse) => {

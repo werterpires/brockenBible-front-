@@ -4,11 +4,16 @@ import { CommonModule } from '@angular/common';
 import { VersesService } from './verses.service';
 import { VersesOnVersionsComponent } from '../verses-on-versions/verses-on-versions.component';
 import { PropositionsComponent } from '../propositions/propositions.component';
+import { PropositionsOnVersesComponent } from '../propositions-on-verses/propositions-on-verses.component';
 
 @Component({
   selector: 'app-verses',
   standalone: true,
-  imports: [CommonModule, VersesOnVersionsComponent, PropositionsComponent],
+  imports: [
+    CommonModule,
+    VersesOnVersionsComponent,
+    PropositionsOnVersesComponent,
+  ],
   templateUrl: './verses.component.html',
   styleUrl: './verses.component.css',
 })
@@ -31,14 +36,17 @@ export class VersesComponent {
       },
     });
 
-    this.versesService.getPropositionsByVerseId(verse.verseId).subscribe({
-      next: (propositions) => {
-        verse.propositions = propositions;
-        this.selectedVerse = verse;
-      },
-      error: (error) => {
-        throw error;
-      },
-    });
+    this.versesService
+      .getPropositionsOnVersesByVerseId(verse.verseId)
+      .subscribe({
+        next: (propositionsOnVerse) => {
+          console.log('propositionsOnVerse', propositionsOnVerse);
+          verse.propositionsOnVerse = propositionsOnVerse;
+          this.selectedVerse = verse;
+        },
+        error: (error) => {
+          throw error;
+        },
+      });
   }
 }

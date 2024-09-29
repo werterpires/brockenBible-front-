@@ -1,4 +1,5 @@
 import { Chapter } from '../chapters/types';
+import { PropositionOnVerse } from '../propositions-on-verses/types';
 import { Proposition } from '../propositions/types';
 import { VerseOnVersion } from '../verses-on-versions/types';
 
@@ -9,7 +10,7 @@ export interface Verse {
   verseTranslation: string;
   chapter?: Chapter;
   verseOnVersions?: VerseOnVersion[];
-  propositions?: Proposition[];
+  propositionsOnVerse?: PropositionOnVerse[];
 }
 
 export interface Version {

@@ -16,20 +16,4 @@ export class PropositionsComponent {
   selectedProposition: Proposition | undefined;
 
   constructor(private readonly propositionsService: PropositionsService) {}
-
-  selectProposition(proposition: Proposition) {
-    this.selectedProposition = proposition;
-
-    this.propositionsService
-      .getAllThemesOnPropositionsByPropositionId(proposition.PropositionId)
-      .subscribe({
-        next: (themesOnPropositions) => {
-          proposition.themesOnPropositions = themesOnPropositions;
-          this.selectedProposition = proposition;
-        },
-        error: (error) => {
-          throw error;
-        },
-      });
-  }
 }

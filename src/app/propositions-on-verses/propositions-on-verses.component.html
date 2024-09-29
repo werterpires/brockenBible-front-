@@ -1,0 +1,28 @@
+<div class="propositions-on-verse">
+  <h1>Proposições</h1>
+  <div
+    class="proposition-on-verse"
+    *ngFor="let propositionOnVerse of propositionsOnVerses"
+  >
+    <p
+      class="proposition-text"
+      (click)="selectPropositionOnVerse(propositionOnVerse)"
+    >
+      {{ propositionOnVerse.proposition?.propositionText }}
+    </p>
+    <ng-container
+      *ngIf="
+        propositionOnVerse.propositionId ===
+          selectedPropositionOnVerse?.propositionId &&
+        propositionOnVerse.proposition &&
+        propositionOnVerse.proposition.themesOnPropositions
+      "
+    >
+      <app-themes-on-propositions
+        [themesOnPropositions]="
+          propositionOnVerse.proposition.themesOnPropositions
+        "
+      ></app-themes-on-propositions>
+    </ng-container>
+  </div>
+</div>
