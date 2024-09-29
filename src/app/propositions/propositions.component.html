@@ -1,8 +1,18 @@
 <div class="propositions">
   <h1>Proposições</h1>
   <div class="proposition" *ngFor="let proposition of propositions">
-    <p class="proposition-number">
+    <p class="proposition-text" (click)="selectProposition(proposition)">
       {{ proposition.proposition }}
     </p>
+    <ng-container
+      *ngIf="
+        proposition.PropositionId === selectedProposition?.PropositionId &&
+        proposition.themesOnPropositions
+      "
+    >
+      <app-themes-on-propositions
+        [themesOnPropositions]="proposition.themesOnPropositions"
+      ></app-themes-on-propositions>
+    </ng-container>
   </div>
 </div>

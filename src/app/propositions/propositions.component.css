@@ -1,0 +1,27 @@
+.propositions {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 8px;
+}
+
+.proposition {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 5px;
+
+  background-color: var(--dark);
+  color: var(--light-text);
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: normal;
+  transition: 0.3s ease-in-out all;
+  line-height: 19px;
+}
+
+.proposition:hover {
+  background-color: var(--dark-hover);
+}
