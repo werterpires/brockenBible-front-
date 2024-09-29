@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { Alert } from './types';
 import { AlertsService } from './alerts.service';
 
@@ -21,9 +21,13 @@ export class AlertsComponent {
     show: false,
   };
 
-  constructor(private readonly alertsService: AlertsService) {
+  constructor(
+    private readonly alertsService: AlertsService,
+    private cdr: ChangeDetectorRef
+  ) {
     this.alertsService.show$.subscribe((alert) => {
       this.alert = alert;
+      this.cdr.detectChanges();
     });
   }
 
