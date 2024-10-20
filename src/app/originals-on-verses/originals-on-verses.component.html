@@ -1,0 +1,29 @@
+<div class="originals-on-verse">
+  <h1>Originais</h1>
+  <div
+    class="original-on-verse"
+    *ngFor="let originalOnVerse of originalsOnVerse"
+  >
+    <div class="original">
+      <p class="original-Title">
+        {{ originalOnVerse.original?.originalName }}
+      </p>
+      <p class="original-description">
+        <span class="property">Significado:</span>
+        <span class="value">
+          {{ originalOnVerse.original?.originalMeaning }}</span
+        >
+      </p>
+      <p class="original-description">
+        <span class="property">Raiz:</span>
+        <span class="value">
+          {{ originalOnVerse.original?.root?.rootWord }} -
+          {{ originalOnVerse.original?.root?.rootMeaning }}</span
+        >
+      </p>
+      <p class="apparatus">
+        {{ originalOnVerse.apparatus }}
+      </p>
+    </div>
+  </div>
+</div>
