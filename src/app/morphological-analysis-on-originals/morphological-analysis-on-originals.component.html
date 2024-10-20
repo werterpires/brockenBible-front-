@@ -1,0 +1,12 @@
+<div class="morphological-analysis-on-originals">
+  <div
+    *ngFor="
+      let morphologicalAnalysisOnOriginal of morphologicalAnalysisOnOriginals
+    "
+    class="morphological-analysis-on-original"
+  >
+    <p>
+      {{ morphologicalAnalysisOnOriginal.morphologicalAnalysis?.analysisName }}
+    </p>
+  </div>
+</div>

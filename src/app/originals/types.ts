@@ -1,3 +1,4 @@
+import { MorphologicalAnalysisOnOriginal } from '../morphological-analysis-on-originals/types';
 import { Root } from '../roots/types';
 
 export interface Original {
@@ -6,4 +7,5 @@ export interface Original {
   originalMeaning: string;
   rootId: number;
   root?: Root;
+  morphologicalAnalysisOnOriginals?: MorphologicalAnalysisOnOriginal[];
 }

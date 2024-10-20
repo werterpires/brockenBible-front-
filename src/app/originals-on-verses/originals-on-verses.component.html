@@ -4,7 +4,7 @@
     class="original-on-verse"
     *ngFor="let originalOnVerse of originalsOnVerse"
   >
-    <div class="original">
+    <div class="original" (click)="selectOriginalOnVerse(originalOnVerse)">
       <p class="original-Title">
         {{ originalOnVerse.original?.originalName }}
       </p>
@@ -24,6 +24,19 @@
       <p class="apparatus">
         {{ originalOnVerse.apparatus }}
       </p>
+      <ng-container
+        *ngIf="
+          selectedOriginalOnVerse?.originalId === originalOnVerse.originalId &&
+          originalOnVerse.original &&
+          originalOnVerse.original.morphologicalAnalysisOnOriginals
+        "
+      >
+        <app-morphological-analysis-on-originals
+          [morphologicalAnalysisOnOriginals]="
+            originalOnVerse.original.morphologicalAnalysisOnOriginals
+          "
+        ></app-morphological-analysis-on-originals>
+      </ng-container>
     </div>
   </div>
 </div>
