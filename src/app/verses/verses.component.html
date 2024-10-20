@@ -14,6 +14,11 @@
           [propositionsOnVerses]="verse.propositionsOnVerse"
         ></app-propositions-on-verses>
       </ng-container>
+      <ng-container *ngIf="verse.originalsOnVerse">
+        <app-originals-on-verses
+          [originalsOnVerse]="verse.originalsOnVerse"
+        ></app-originals-on-verses>
+      </ng-container>
     </ng-container>
   </div>
 </div>
