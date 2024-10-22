@@ -21,3 +21,7 @@
   transition: 0.3s ease-in-out all;
   line-height: 19px;
 }
+
+.morphological-analysis-on-original:hover {
+  background-color: var(--light-hover);
+}
