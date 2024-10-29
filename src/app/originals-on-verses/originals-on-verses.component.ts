@@ -27,7 +27,6 @@ export class OriginalsOnVersesComponent {
       )
       .subscribe({
         next: (morphAnalysisOnVerse) => {
-          console.log(morphAnalysisOnVerse);
           if (!originalOnVerse.original) {
             originalOnVerse.original = {
               originalId: originalOnVerse.originalId,
@@ -41,6 +40,9 @@ export class OriginalsOnVersesComponent {
           originalOnVerse.original.morphologicalAnalysisOnOriginals =
             morphAnalysisOnVerse;
           this.selectedOriginalOnVerse = originalOnVerse;
+        },
+        error: (error) => {
+          throw error;
         },
       });
   }

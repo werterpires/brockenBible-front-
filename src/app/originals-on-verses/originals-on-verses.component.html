@@ -4,8 +4,11 @@
     class="original-on-verse"
     *ngFor="let originalOnVerse of originalsOnVerse"
   >
-    <div class="original" (click)="selectOriginalOnVerse(originalOnVerse)">
-      <p class="original-Title">
+    <div class="original">
+      <p
+        class="original-Title"
+        (click)="selectOriginalOnVerse(originalOnVerse)"
+      >
         {{ originalOnVerse.original?.originalName }}
       </p>
       <p class="original-description">

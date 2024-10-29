@@ -5,8 +5,30 @@
     "
     class="morphological-analysis-on-original"
   >
-    <p>
+    <p
+      class="morphological-analysis-on-original-name"
+      (click)="
+        selectMorphologicalAnalysisOnOriginal(morphologicalAnalysisOnOriginal)
+      "
+    >
       {{ morphologicalAnalysisOnOriginal.morphologicalAnalysis?.analysisName }}
     </p>
+
+    <ng-container
+      *ngIf="
+        selectedMorphologicalAnalysisOnOriginal?.morphAnalysisId ===
+          morphologicalAnalysisOnOriginal.morphAnalysisId &&
+        morphologicalAnalysisOnOriginal.morphologicalAnalysis &&
+        morphologicalAnalysisOnOriginal.morphologicalAnalysis
+          .valuesOnMorphologicalAnalysis
+      "
+    >
+      <app-values-on-morphological-analysis
+        [valuesOnMorphologicalAnalysis]="
+          morphologicalAnalysisOnOriginal.morphologicalAnalysis
+            .valuesOnMorphologicalAnalysis
+        "
+      ></app-values-on-morphological-analysis>
+    </ng-container>
   </div>
 </div>

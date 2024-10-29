@@ -1,0 +1,14 @@
+<div class="values-on-morphological-analysis">
+  <div
+    class="value-on-morphological-analysis"
+    *ngFor="let valueOnMorphologicalAnalysis of valuesOnMorphologicalAnalysis"
+  >
+    <p class="value-on-morphological-analysis-text">
+      {{
+        valueOnMorphologicalAnalysis.possiblePropertyValue?.wordsProperty
+          ?.wordsPropertyName
+      }}: {{ valueOnMorphologicalAnalysis.possiblePropertyValue?.value }} -
+      {{ valueOnMorphologicalAnalysis.possiblePropertyValue?.implication }}
+    </p>
+  </div>
+</div>
