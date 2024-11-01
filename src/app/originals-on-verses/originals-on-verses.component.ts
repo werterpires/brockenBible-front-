@@ -3,11 +3,16 @@ import { OriginalOnVerse } from './types';
 import { CommonModule } from '@angular/common';
 import { OriginalsOnVersesService } from './originals-on-verses.service';
 import { MorphologicalAnalysisOnOriginalsComponent } from '../morphological-analysis-on-originals/morphological-analysis-on-originals.component';
+import { RootsComponent } from '../roots/roots.component';
 
 @Component({
   selector: 'app-originals-on-verses',
   standalone: true,
-  imports: [CommonModule, MorphologicalAnalysisOnOriginalsComponent],
+  imports: [
+    CommonModule,
+    MorphologicalAnalysisOnOriginalsComponent,
+    RootsComponent,
+  ],
   templateUrl: './originals-on-verses.component.html',
   styleUrl: './originals-on-verses.component.css',
 })

@@ -1,1 +1,12 @@
-<p>roots works!</p>
+<div class="roots">
+  <div class="root">
+    <p class="root-word" (click)="getEtymologicalGroups()">
+      {{ root?.rootWord }}: {{ root?.rootMeaning }}
+    </p>
+    <ng-container *ngIf="root && root.rootOnEtymologicalGroups">
+      <app-roots-on-etymological-groups
+        [rootOnEtymologicalGroups]="root.rootOnEtymologicalGroups"
+      ></app-roots-on-etymological-groups>
+    </ng-container>
+  </div>
+</div>

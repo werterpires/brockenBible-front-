@@ -1,1 +1,12 @@
-<p>roots-on-etymological-groups works!</p>
+<div class="root-on-etymological-groups">
+  <div
+    class="root-on-etymological-group"
+    *ngFor="let etymologicalGroup of rootOnEtymologicalGroups"
+  >
+    <p>
+      {{ etymologicalGroup.etymGroup?.etymGroupName }}:
+      {{ etymologicalGroup.etymGroup?.etymGroupDescription }}
+    </p>
+    <p>Raiz: {{ etymologicalGroup.etymGroup?.groupRoot }}</p>
+  </div>
+</div>
