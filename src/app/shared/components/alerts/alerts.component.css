@@ -14,10 +14,10 @@
 
 .close-button {
   position: absolute;
-  top: -9px;
+  top: -2px;
   right: 2px;
   background-color: var(--dark);
-  color: var(--light-text);
+  color: var(--text-caption);
   border: none;
   cursor: pointer;
   border-radius: 15%;
@@ -26,32 +26,34 @@
 }
 
 .error {
-  background-color: var(--danger);
+  background-color: var(--danger-normal);
 }
 
 .info {
-  background-color: var(--info);
+  background-color: var(--information-normal);
 }
 
 .success {
-  background-color: var(--success);
+  background-color: var(--success-normal);
 }
 
 .warning {
-  background-color: var(--warning);
+  background-color: var(--warning-normal);
 }
 
 .alert-message-container {
   padding: 10px;
-  color: var(--dark-text);
+  color: var(--text-caption);
 }
 
 .alert-title {
   font-family: "Noto Sans", sans-serif;
   font-weight: bold;
+  color: var(--text-caption);
 }
 
 .alert-description {
   font-family: "Noto Sans", sans-serif;
   display: block;
+  color: var(--text-caption);
 }

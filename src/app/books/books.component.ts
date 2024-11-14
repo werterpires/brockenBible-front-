@@ -5,23 +5,27 @@ import { BooksService } from './books.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { ChaptersComponent } from '../chapters/chapters.component';
+import { CustomFormComponent } from '../shared/components/custom-form/custom-form.component';
+import { FormsModule } from '@angular/forms';
+import * as utils from './books.utils';
 
 @Component({
   selector: 'app-books',
   standalone: true,
-  imports: [HttpClientModule, CommonModule, ChaptersComponent],
+  imports: [
+    HttpClientModule,
+    CommonModule,
+    ChaptersComponent,
+    CustomFormComponent,
+    FormsModule,
+  ],
   templateUrl: './books.component.html',
   styleUrl: './books.component.css',
   providers: [BooksService],
 })
 export class booksComponent {
   books: Book[] = [];
-  createBookData: CreateBook = {
-    bookAbbr: '',
-    bookCompleteName: '',
-    bookReducedName: '',
-    testament: 'Novo',
-  };
+  createBookData = utils.createBookData;
   selectedBook: Book | undefined;
   paginator: Paginator = {
     limit: 10,
@@ -29,6 +33,8 @@ export class booksComponent {
     orderBy: 'book_position',
     direction: 'asc',
   };
+
+  creating = false;
 
   constructor(private readonly booksService: BooksService) {}
 
@@ -81,7 +87,11 @@ export class booksComponent {
 
   createBook() {
     this.booksService.createBook(this.createBookData).subscribe({
-      next: (livro) => {},
+      next: (livro) => {
+        this.books.push(livro);
+        this.creating = false;
+        this.createBookData = utils.createBookData;
+      },
       error: (error) => {
         throw error;
       },
@@ -96,6 +106,7 @@ export class booksComponent {
       bookCompleteName: this.selectedBook.bookCompleteName,
       bookReducedName: this.selectedBook.bookReducedName,
       testament: this.selectedBook.testament,
+      bookPosition: this.selectedBook.bookPosition,
     };
     this.booksService.updateBook(dadosAtualizarLivro).subscribe({
       next: (livro) => {

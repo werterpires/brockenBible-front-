@@ -6,6 +6,7 @@ export interface CreateBook {
   bookCompleteName: string;
   bookReducedName: string;
   testament: Testament;
+  bookPosition: number;
   chapters?: Chapter[];
 }
 

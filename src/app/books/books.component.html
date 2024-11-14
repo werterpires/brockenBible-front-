@@ -1,11 +1,70 @@
 <div class="books">
   <div *ngFor="let book of books" class="book">
     <p (click)="selectBook(book)">{{ book.bookCompleteName }}</p>
-
     <ng-container *ngIf="selectedBook?.bookId === book.bookId">
       <ng-container *ngIf="book.chapters">
         <app-chapters [chapters]="book.chapters"></app-chapters>
       </ng-container>
     </ng-container>
   </div>
+  <img
+    class="plus-icon"
+    src="assets/icons/plusIcon.svg"
+    alt="Mais"
+    (click)="creating = true"
+  />
 </div>
+<ng-container *ngIf="creating">
+  <app-custom-form
+    (cancelEmmitter)="creating = false"
+    (saveEmmitter)="createBook()"
+  >
+    <div class="form-section">
+      <label class="huge-input">
+        <p>Nome completo do Livro</p>
+        <input
+          type="text"
+          placeholder="Primeira epístola de Paulo aos Corinthios"
+          [(ngModel)]="createBookData.bookCompleteName"
+        />
+      </label>
+    </div>
+
+    <div class="form-section">
+      <label>
+        <p>Nome reduzido</p>
+        <input
+          type="text"
+          placeholder="1 Corinthios"
+          [(ngModel)]="createBookData.bookReducedName"
+        />
+      </label>
+      <label class="small-input">
+        <p>Abreviação</p>
+        <input
+          type="text"
+          placeholder="1Cor"
+          [(ngModel)]="createBookData.bookAbbr"
+        />
+      </label>
+    </div>
+    <div class="form-section">
+      <label class="tiny-input">
+        <p>Posição</p>
+        <input
+          type="number"
+          min="1"
+          placeholder="46"
+          [(ngModel)]="createBookData.bookPosition"
+        />
+      </label>
+      <label class="medium-input">
+        <p>Testamento</p>
+        <select [(ngModel)]="createBookData.testament">
+          <option value="Antigo">Antigo</option>
+          <option value="Novo">Novo</option>
+        </select>
+      </label>
+    </div>
+  </app-custom-form>
+</ng-container>

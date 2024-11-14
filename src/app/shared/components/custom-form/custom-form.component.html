@@ -1,0 +1,20 @@
+<app-modal>
+  <div id="form-container">
+    <h1>{{ title }}</h1>
+    <form>
+      <ng-content></ng-content>
+      <div id="buttons-container">
+        <button id="save-button" type="button" (click)="saveEmmitter.emit()">
+          Salvar
+        </button>
+        <button
+          id="cancel-button"
+          type="button"
+          (click)="cancelEmmitter.emit()"
+        >
+          Cancelar
+        </button>
+      </div>
+    </form>
+  </div>
+</app-modal>

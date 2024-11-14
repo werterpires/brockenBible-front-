@@ -11,11 +11,14 @@ export class BooksService {
   constructor(private readonly httpClient: HttpClient) {}
 
   createBook(createBookData: CreateBook): Observable<Book> {
+    console.log(createBookData);
     return this.httpClient
       .post<Book>('http://localhost:3000/books', createBookData)
       .pipe(
         catchError((error: HttpErrorResponse) => {
-          return throwError(() => new HttpErrorResponse(error.error.message));
+          console.log('erro do jeito que vem', error);
+          console.log('só a mensagem', error.error.error.message);
+          throw error;
         })
       );
   }
