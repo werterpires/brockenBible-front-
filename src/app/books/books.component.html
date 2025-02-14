@@ -20,51 +20,61 @@
     (saveEmmitter)="createBook()"
   >
     <div class="form-section">
-      <label class="huge-input">
-        <p>Nome completo do Livro</p>
-        <input
-          type="text"
-          placeholder="Primeira epístola de Paulo aos Corinthios"
-          [(ngModel)]="createBookData.bookCompleteName"
-        />
-      </label>
+      <app-custom-input
+        [label]="'Nome completo do Livro'"
+        [(ngModel)]="createBookData.bookCompleteName"
+        [inputType]="'text'"
+        placeholder="Primeira epístola de Paulo aos Corinthios"
+        [size]="'huge'"
+        [customValidators]="[validators.minMaxLength(5, 150)]"
+      >
+      </app-custom-input>
     </div>
 
     <div class="form-section">
-      <label>
-        <p>Nome reduzido</p>
-        <input
-          type="text"
-          placeholder="1 Corinthios"
-          [(ngModel)]="createBookData.bookReducedName"
-        />
-      </label>
-      <label class="small-input">
-        <p>Abreviação</p>
-        <input
-          type="text"
-          placeholder="1Cor"
-          [(ngModel)]="createBookData.bookAbbr"
-        />
-      </label>
+      <app-custom-input
+        [label]="'Nome reduzido'"
+        [(ngModel)]="createBookData.bookReducedName"
+        [inputType]="'text'"
+        placeholder="1 Corinthios"
+        [size]="'big'"
+        [customValidators]="[validators.minMaxLength(2, 100)]"
+      >
+      </app-custom-input>
+      <app-custom-input
+        [label]="'Abreviação'"
+        [(ngModel)]="createBookData.bookAbbr"
+        [inputType]="'text'"
+        placeholder="1Cor"
+        [size]="'small'"
+        [customValidators]="[validators.minMaxLength(2, 10)]"
+      >
+      </app-custom-input>
     </div>
     <div class="form-section">
-      <label class="tiny-input">
-        <p>Posição</p>
-        <input
-          type="number"
-          min="1"
-          placeholder="46"
-          [(ngModel)]="createBookData.bookPosition"
-        />
-      </label>
-      <label class="medium-input">
-        <p>Testamento</p>
-        <select [(ngModel)]="createBookData.testament">
-          <option value="Antigo">Antigo</option>
-          <option value="Novo">Novo</option>
-        </select>
-      </label>
+      <app-custom-input
+        [size]="'tiny'"
+        [label]="'Posição'"
+        [(ngModel)]="createBookData.bookPosition"
+        [inputType]="'number'"
+        [customValidators]="[validators.minMax(1, 66)]"
+        [placeholder]="'46'"
+      >
+      </app-custom-input>
+      <app-custom-input
+        [selectOptions]="[
+          { value: 'Antigo', label: 'Antigo' },
+          { value: 'Novo', label: 'Novo' }
+        ]"
+        [label]="'Testamento'"
+        [(ngModel)]="createBookData.testament"
+        [inputType]="'select'"
+      >
+      </app-custom-input>
     </div>
+    <div class="form-section"></div>
+
+    {{ createBookData.testament }}
+    {{ createBookData.bookPosition }}
   </app-custom-form>
 </ng-container>

@@ -1,0 +1,48 @@
+<label
+  [class]="size + '-input'"
+  (mouseenter)="errorMessagesDiv.classList.remove('hidden')"
+  (mouseleave)="errorMessagesDiv.classList.add('hidden')"
+>
+  <p [ngClass]="errorMessages.length > 0 ? 'error' : ''">{{ label }}</p>
+  <select
+    *ngIf="inputType === 'select'"
+    #customSelect
+    [value]="value"
+    (change)="onInput($event)"
+  >
+    <option *ngFor="let option of selectOptions" value="{{ option.value }}">
+      {{ option.label }}
+    </option>
+  </select>
+
+  <input
+    *ngIf="inputType === 'number'"
+    type="number"
+    [ngClass]="errorMessages.length > 0 ? 'error-input' : ''"
+    [value]="value"
+    (input)="onInput($event)"
+    (blur)="validate()"
+    [placeholder]="placeholder"
+  />
+
+  <input
+    *ngIf="inputType === 'text'"
+    type="text"
+    [ngClass]="errorMessages.length > 0 ? 'error-input' : ''"
+    [value]="value"
+    (input)="onInput($event)"
+    (blur)="validate()"
+    [placeholder]="placeholder"
+  />
+
+  <div
+    #errorMessagesDiv
+    [ngStyle]="{
+      'background-color':
+        errorMessages.length > 0 ? ' var(--background-three)' : ''
+    }"
+    class="hidden error-messages"
+  >
+    <p *ngFor="let message of errorMessages">- {{ message }}</p>
+  </div>
+</label>

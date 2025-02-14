@@ -16,8 +16,6 @@ export class BooksService {
       .post<Book>('http://localhost:3000/books', createBookData)
       .pipe(
         catchError((error: HttpErrorResponse) => {
-          console.log('erro do jeito que vem', error);
-          console.log('só a mensagem', error.error.error.message);
           throw error;
         })
       );

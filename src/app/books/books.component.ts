@@ -8,6 +8,8 @@ import { ChaptersComponent } from '../chapters/chapters.component';
 import { CustomFormComponent } from '../shared/components/custom-form/custom-form.component';
 import { FormsModule } from '@angular/forms';
 import * as utils from './books.utils';
+import * as validators from '../shared/components/custom-input/validators';
+import { CustomInputComponent } from '../shared/components/custom-input/custom-input.component';
 
 @Component({
   selector: 'app-books',
@@ -18,6 +20,7 @@ import * as utils from './books.utils';
     ChaptersComponent,
     CustomFormComponent,
     FormsModule,
+    CustomInputComponent,
   ],
   templateUrl: './books.component.html',
   styleUrl: './books.component.css',
@@ -33,6 +36,7 @@ export class booksComponent {
     orderBy: 'book_position',
     direction: 'asc',
   };
+  validators = validators;
 
   creating = false;
 
@@ -86,6 +90,7 @@ export class booksComponent {
   }
 
   createBook() {
+    this.createBookData.bookPosition = Number(this.createBookData.bookPosition);
     this.booksService.createBook(this.createBookData).subscribe({
       next: (livro) => {
         this.books.push(livro);

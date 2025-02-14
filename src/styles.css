@@ -131,6 +131,14 @@ input:focus {
   width: 150px;
 }
 
+.big-input {
+  width: 200px;
+}
+
 .huge-input {
   width: 320px;
+}
+
+.hidden {
+  display: none;
 }
