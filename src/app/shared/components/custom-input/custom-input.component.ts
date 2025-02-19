@@ -57,7 +57,6 @@ export class CustomInputComponent implements ControlValueAccessor {
   }
 
   validate(): void {
-    console.log('VALIDANDO AS COISA');
     this.errorMessages = [];
     this.customValidators.forEach((validator) => {
       const result = validator(this.value);
@@ -65,7 +64,5 @@ export class CustomInputComponent implements ControlValueAccessor {
         this.errorMessages.push(result);
       }
     });
-
-    console.log('this.errorMessages', this.errorMessages);
   }
 }
