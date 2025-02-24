@@ -28,7 +28,7 @@ import { CustomInputComponent } from '../shared/components/custom-input/custom-i
 })
 export class booksComponent {
   books: Book[] = [];
-  createBookData = utils.createBookData;
+  createBookData = { ...utils.createBookData };
   selectedBook: Book | undefined;
   paginator: Paginator = {
     limit: 10,
@@ -95,7 +95,7 @@ export class booksComponent {
       next: (livro) => {
         this.books.push(livro);
         this.creating = false;
-        this.createBookData = utils.createBookData;
+        this.createBookData = { ...utils.createBookData };
       },
       error: (error) => {
         throw error;

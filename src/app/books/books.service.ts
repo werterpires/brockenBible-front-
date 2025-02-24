@@ -11,7 +11,6 @@ export class BooksService {
   constructor(private readonly httpClient: HttpClient) {}
 
   createBook(createBookData: CreateBook): Observable<Book> {
-    console.log(createBookData);
     return this.httpClient
       .post<Book>('http://localhost:3000/books', createBookData)
       .pipe(

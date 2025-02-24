@@ -9,3 +9,9 @@ export interface Chapter {
   book?: Book;
   verses: Verse[];
 }
+
+export interface CreateChapter {
+  chapterNumber: number;
+  chapterSummary: string;
+  bookId: number;
+}

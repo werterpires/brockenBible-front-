@@ -9,7 +9,10 @@
     <p (click)="selectBook(book)">{{ book.bookCompleteName }}</p>
     <ng-container *ngIf="selectedBook?.bookId === book.bookId">
       <ng-container *ngIf="book.chapters">
-        <app-chapters [chapters]="book.chapters"></app-chapters>
+        <app-chapters
+          [chapters]="book.chapters"
+          [bookId]="book.bookId"
+        ></app-chapters>
       </ng-container>
     </ng-container>
   </div>
@@ -89,8 +92,5 @@
       </app-custom-input>
     </div>
     <div class="form-section"></div>
-
-    {{ createBookData.testament }}
-    {{ createBookData.bookPosition }}
   </app-custom-form>
 </ng-container>

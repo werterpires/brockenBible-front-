@@ -9,4 +9,43 @@
       </ng-container>
     </ng-container>
   </div>
+  <img
+    class="plus-icon"
+    src="assets/icons/plusIcon.svg"
+    alt="Mais"
+    (click)="creating = true"
+  />
 </div>
+<ng-container *ngIf="creating">
+  <app-custom-form
+    (cancelEmmitter)="creating = false"
+    (saveEmmitter)="createChapter()"
+  >
+    <div class="form-section">
+      <app-custom-input
+        [label]="'Número do capítulo'"
+        [(ngModel)]="createChapterData.chapterNumber"
+        [inputType]="'number'"
+        placeholder="13"
+        [size]="'tiny'"
+        [customValidators]="[validators.minMax(1, 150), validators.required()]"
+      >
+      </app-custom-input>
+    </div>
+
+    <div class="form-section">
+      <app-custom-input
+        [label]="'Resumo do capítulo'"
+        [(ngModel)]="createChapterData.chapterSummary"
+        [inputType]="'text'"
+        placeholder="Comparação entre os dons espirituais e o exercício do amor"
+        [size]="'huge'"
+        [customValidators]="[
+          validators.minMaxLength(5, 255),
+          validators.required()
+        ]"
+      >
+      </app-custom-input>
+    </div>
+  </app-custom-form>
+</ng-container>
