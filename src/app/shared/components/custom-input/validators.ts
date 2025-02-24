@@ -18,26 +18,32 @@ export function minMaxLength(min: number, max: number) {
 }
 
 export function isEmail() {
-  return (value: string): ValidationErrors | null => {
+  return (value: string): String | null => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(value) ? null : { isEmail: 'O e-mail não é válido' };
+    return emailRegex.test(value) ? null : 'O e-mail não é válido';
   };
 }
 
 // Outras validações personalizadas
 export function contains(substring: string) {
-  return (value: string): ValidationErrors | null => {
+  return (value: string): String | null => {
     return value.includes(substring)
       ? null
-      : { contains: `O valor deve conter "${substring}"` };
+      : `O valor deve conter "${substring}"`;
   };
 }
 
 export function hasXWords(wordCount: number) {
-  return (value: string): ValidationErrors | null => {
+  return (value: string): String | null => {
     const words = value.trim().split(/\s+/).length;
     return words >= wordCount
       ? null
-      : { hasXWords: `O texto deve ter pelo menos ${wordCount} palavras` };
+      : `O texto deve ter pelo menos ${wordCount} palavras`;
+  };
+}
+
+export function required() {
+  return (value: string): string | null => {
+    return value.trim() !== '' ? null : 'O campo é obrigatório';
   };
 }
