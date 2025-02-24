@@ -1,5 +1,11 @@
 <div class="books">
   <div *ngFor="let book of books" class="book">
+    <img
+      class="trash-icon"
+      src="assets/icons/trashIcon.svg"
+      alt="Deletar"
+      (click)="deleteBook(book.bookId)"
+    />
     <p (click)="selectBook(book)">{{ book.bookCompleteName }}</p>
     <ng-container *ngIf="selectedBook?.bookId === book.bookId">
       <ng-container *ngIf="book.chapters">

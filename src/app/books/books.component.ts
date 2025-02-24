@@ -71,8 +71,8 @@ export class booksComponent {
     });
   }
 
-  deletarLivro(idLivro: number) {
-    this.booksService.deletarLivro(idLivro).subscribe({
+  deleteBook(bookId: number) {
+    this.booksService.deleteBook(bookId).subscribe({
       next: () => {
         this.getBooks();
       },

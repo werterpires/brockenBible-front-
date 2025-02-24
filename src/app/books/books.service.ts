@@ -56,7 +56,7 @@ export class BooksService {
       );
   }
 
-  deletarLivro(bookId: number): Observable<void> {
+  deleteBook(bookId: number): Observable<void> {
     return this.httpClient
       .delete<void>(`http://localhost:3000/books/${bookId}`)
       .pipe(
