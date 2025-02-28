@@ -1,4 +1,5 @@
 .verses {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -12,7 +13,7 @@
   justify-content: flex-start;
   padding: 5px;
 
-  background-color: var(--light);
+  background-color: var(--background-two);
   color: var(--dark-text);
   cursor: pointer;
   border-radius: 5px;
@@ -23,5 +24,20 @@
 }
 
 .verse:hover {
-  background-color: var(--light-hover);
+  background-color: var(--tertiary-subtle);
+}
+
+.plus-icon {
+  position: absolute;
+  right: -25px;
+  top: 2px;
+
+  width: 30px;
+  cursor: pointer;
+
+  transition: 0.3s ease-in-out all;
+}
+
+.plus-icon:hover {
+  transform: rotate(180deg);
 }

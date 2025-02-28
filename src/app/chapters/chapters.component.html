@@ -5,7 +5,10 @@
     </p>
     <ng-container *ngIf="selectedChapter?.chapterId === chapter.chapterId">
       <ng-container *ngIf="chapter.verses">
-        <app-verses [verses]="chapter.verses"></app-verses>
+        <app-verses
+          [verses]="chapter.verses"
+          [chapterId]="chapter.chapterId"
+        ></app-verses>
       </ng-container>
     </ng-container>
   </div>

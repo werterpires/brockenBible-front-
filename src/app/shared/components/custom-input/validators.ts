@@ -44,6 +44,9 @@ export function hasXWords(wordCount: number) {
 
 export function required() {
   return (value: string): string | null => {
+    if (typeof value !== 'string') {
+      return null;
+    }
     return value.trim() !== '' ? null : 'O campo é obrigatório';
   };
 }

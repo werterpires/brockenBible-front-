@@ -2,15 +2,25 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
 import { VerseOnVersion } from '../verses-on-versions/types';
-import { Proposition } from '../propositions/types';
 import { PropositionOnVerse } from '../propositions-on-verses/types';
 import { OriginalOnVerse } from '../originals-on-verses/types';
+import { CreateVerse, Verse } from './types';
 
 @Injectable({
   providedIn: 'root',
 })
 export class VersesService {
   constructor(private readonly httpClient: HttpClient) {}
+
+  createVerse(createVerseData: CreateVerse): Observable<Verse> {
+    return this.httpClient
+      .post<Verse>('http://localhost:3000/verses', createVerseData)
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          throw error;
+        })
+      );
+  }
 
   getVersesOnVersionsByVerseId(verseId: number): Observable<VerseOnVersion[]> {
     return this.httpClient

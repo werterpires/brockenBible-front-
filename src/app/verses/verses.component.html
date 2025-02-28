@@ -21,4 +21,44 @@
       </ng-container>
     </ng-container>
   </div>
+  <img
+    class="plus-icon"
+    src="assets/icons/plusIcon.svg"
+    alt="Mais"
+    (click)="creating = true"
+  />
 </div>
+
+<ng-container *ngIf="creating">
+  <app-custom-form
+    (cancelEmmitter)="creating = false"
+    (saveEmmitter)="createVerse()"
+  >
+    <div class="form-section">
+      <app-custom-input
+        [label]="'Número do verso'"
+        [(ngModel)]="createVerseData.verseNumber"
+        [inputType]="'number'"
+        placeholder="7"
+        [size]="'tiny'"
+        [customValidators]="[validators.minMax(1, 180), validators.required()]"
+      >
+      </app-custom-input>
+    </div>
+
+    <div class="form-section">
+      <app-custom-input
+        [label]="'Tradução do versículo'"
+        [(ngModel)]="createVerseData.verseTranslation"
+        [inputType]="'text'"
+        placeholder="Tudo cobre, tudo crê, tudo espera, tudo aguenta."
+        [size]="'huge'"
+        [customValidators]="[
+          validators.minMaxLength(10, 3000),
+          validators.required()
+        ]"
+      >
+      </app-custom-input>
+    </div>
+  </app-custom-form>
+</ng-container>

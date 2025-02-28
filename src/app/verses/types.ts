@@ -4,11 +4,14 @@ import { PropositionOnVerse } from '../propositions-on-verses/types';
 import { Proposition } from '../propositions/types';
 import { VerseOnVersion } from '../verses-on-versions/types';
 
-export interface Verse {
-  verseId: number;
+export interface CreateVerse {
   chapterId: number;
   verseNumber: number;
   verseTranslation: string;
+}
+
+export interface Verse extends CreateVerse {
+  verseId: number;
   chapter?: Chapter;
   verseOnVersions?: VerseOnVersion[];
   propositionsOnVerse?: PropositionOnVerse[];
