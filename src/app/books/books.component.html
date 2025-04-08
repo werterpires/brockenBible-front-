@@ -33,7 +33,7 @@
         [label]="'Nome completo do Livro'"
         [(ngModel)]="createBookData.bookCompleteName"
         [inputType]="'text'"
-        placeholder="Primeira epístola de Paulo aos Corinthios"
+        [placeholder]="'Primeira epístola de Paulo aos Corinthios'"
         [size]="'huge'"
         [customValidators]="[
           validators.minMaxLength(5, 150),

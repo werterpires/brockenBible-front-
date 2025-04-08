@@ -26,7 +26,6 @@ export class RootsComponent {
         next: (rootOnEtymologicalGroups) => {
           if (!this.root) return;
           this.root.rootOnEtymologicalGroups = rootOnEtymologicalGroups;
-          console.log('Grupos etimológicos', rootOnEtymologicalGroups);
         },
         error: (error) => {
           throw error;

@@ -1,11 +1,12 @@
 <header>
-  <nav>
-    <ul>
-      <li>
-        <div><a routerLink="/">Livros</a></div>
-      </li>
-      <li>
-        <div><a routerLink="/versoes">Versões</a></div>
+  <nav class="menu">
+    <ul class="menu-buttons">
+      <li *ngFor="let menuButton of menuButtons">
+        <div class="menu-button">
+          <a class="menu-text" routerLink="{{ menuButton.route }}">{{
+            menuButton.name
+          }}</a>
+        </div>
       </li>
     </ul>
   </nav>

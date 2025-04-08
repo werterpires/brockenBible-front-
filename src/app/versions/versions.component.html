@@ -1,0 +1,52 @@
+<div class="versions">
+  <div *ngFor="let version of versions" class="version">
+    <img
+      class="trash-icon"
+      src="assets/icons/trashIcon.svg"
+      alt="Deletar"
+      (click)="deleteVersion(version.versionId)"
+    />
+    <p (click)="selectVersion(version)">{{ version.versionName }}</p>
+  </div>
+  <img
+    class="plus-icon"
+    src="assets/icons/plusIcon.svg"
+    alt="Mais"
+    (click)="creating = true"
+  />
+</div>
+<ng-container *ngIf="creating">
+  <app-custom-form
+    (cancelEmmitter)="creating = false"
+    (saveEmmitter)="createVersion()"
+  >
+    <div class="form-section">
+      <app-custom-input
+        [label]="'Nome da versão'"
+        [(ngModel)]="createVersionData.versionName"
+        [inputType]="'text'"
+        placeholder="Almeida Revista e Atualizada"
+        [size]="'huge'"
+        [customValidators]="[
+          validators.minMaxLength(5, 150),
+          validators.required()
+        ]"
+      >
+      </app-custom-input>
+    </div>
+    <div class="form-section">
+      <app-custom-input
+        [label]="'Sigla da versão'"
+        [(ngModel)]="createVersionData.versionAbbr"
+        [inputType]="'text'"
+        placeholder="ARA"
+        [size]="'huge'"
+        [customValidators]="[
+          validators.minMaxLength(2, 20),
+          validators.required()
+        ]"
+      >
+      </app-custom-input>
+    </div>
+  </app-custom-form>
+</ng-container>

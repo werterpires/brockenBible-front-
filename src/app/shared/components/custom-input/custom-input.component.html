@@ -8,8 +8,10 @@
     *ngIf="inputType === 'select'"
     #customSelect
     [value]="value"
-    (change)="onInput($event)"
+    [ngClass]="errorMessages.length > 0 ? 'error-input' : ''"
+    (change)="onInput($event); validate()"
   >
+    <option value="">Escolha uma opção</option>
     <option *ngFor="let option of selectOptions" value="{{ option.value }}">
       {{ option.label }}
     </option>

@@ -25,7 +25,7 @@ export class VersesService {
   getVersesOnVersionsByVerseId(verseId: number): Observable<VerseOnVersion[]> {
     return this.httpClient
       .get<VerseOnVersion[]>(
-        `http://localhost:3000/verses-on-versions/verse/${verseId}/version_abbr`
+        `http://localhost:3000/verses-on-versions/verse/${verseId}/verse_text`
       )
       .pipe(
         catchError((error: HttpErrorResponse) => {

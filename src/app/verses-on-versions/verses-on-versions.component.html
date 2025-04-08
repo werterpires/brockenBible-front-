@@ -1,9 +1,51 @@
 <div class="verses-on-versions">
   <h1>Texto em outras versões</h1>
   <div class="verse-on-version" *ngFor="let verseOnVersion of versesOnVersions">
-    <p class="verse-on-version-text">
-      {{ verseOnVersion.verseText }} (
-      {{ verseOnVersion.version?.versionAbbr }} )
+    <p
+      class="verse-on-version-text"
+      [ngStyle]="{
+        color: assignColorsToPhrases(verseOnVersion)
+      }"
+    >
+      {{ verseOnVersion.verseText }} ({{ verseOnVersion.version?.versionAbbr }})
     </p>
   </div>
+  <img
+    class="plus-icon"
+    src="assets/icons/plusIcon.svg"
+    alt="Mais"
+    (click)="creating = true"
+  />
 </div>
+<ng-container *ngIf="creating">
+  <app-custom-form
+    (cancelEmmitter)="creating = false"
+    (saveEmmitter)="createVerseOnVersion()"
+  >
+    <div class="form-section">
+      <app-custom-input
+        [customValidators]="[validators.required()]"
+        [(ngModel)]="createVerseOnVersionData.versionId"
+        [inputType]="'select'"
+        [label]="'Versão'"
+        [placeholder]="'Almeida Revista e Atualizada'"
+        [selectOptions]="selectOption"
+        [size]="'big'"
+      ></app-custom-input>
+    </div>
+
+    <div class="form-section">
+      <app-custom-input
+        [customValidators]="[
+          validators.required(),
+          validators.minMaxLength(5, 1500)
+        ]"
+        [(ngModel)]="createVerseOnVersionData.verseText"
+        [inputType]="'text'"
+        [label]="'Texto'"
+        [placeholder]="'No princípio criou Deus os céus e a terra.'"
+        [size]="'huge'"
+      ></app-custom-input>
+    </div>
+  </app-custom-form>
+</ng-container>

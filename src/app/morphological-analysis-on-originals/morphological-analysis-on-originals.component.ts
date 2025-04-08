@@ -35,10 +35,6 @@ export class MorphologicalAnalysisOnOriginalsComponent {
       )
       .subscribe({
         next: (valuesOnMorphologicalAnalysis) => {
-          console.log(
-            'valuesOnMorphologicalAnalysis',
-            valuesOnMorphologicalAnalysis
-          );
           if (!morphologicalAnalysisOnOriginal.morphologicalAnalysis) {
             morphologicalAnalysisOnOriginal.morphologicalAnalysis = {
               morphAnalysisId: morphologicalAnalysisOnOriginal.morphAnalysisId,
@@ -50,11 +46,6 @@ export class MorphologicalAnalysisOnOriginalsComponent {
             valuesOnMorphologicalAnalysis;
           this.selectedMorphologicalAnalysisOnOriginal =
             morphologicalAnalysisOnOriginal;
-
-          console.log(
-            'morphologicalAnalysisOnOriginal',
-            morphologicalAnalysisOnOriginal
-          );
         },
         error: (error) => {
           throw error;

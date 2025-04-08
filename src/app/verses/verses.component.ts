@@ -54,7 +54,6 @@ export class VersesComponent {
       .getPropositionsOnVersesByVerseId(verse.verseId)
       .subscribe({
         next: (propositionsOnVerse) => {
-          console.log('propositionsOnVerse', propositionsOnVerse);
           verse.propositionsOnVerse = propositionsOnVerse;
           this.selectedVerse = verse;
         },
@@ -67,7 +66,6 @@ export class VersesComponent {
       next: (originalsOnVerse) => {
         verse.originalsOnVerse = originalsOnVerse;
         this.selectedVerse = verse;
-        console.log('originalsOnVerse', originalsOnVerse);
       },
       error: (error) => {
         throw error;

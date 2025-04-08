@@ -8,6 +8,7 @@ import {
   ValidationErrors,
   Validator,
 } from '@angular/forms';
+import { SelectOption } from './types';
 
 @Component({
   selector: 'app-custom-input',
@@ -29,7 +30,7 @@ export class CustomInputComponent implements ControlValueAccessor {
   onChange = (value: string) => {};
   onTouched = () => {};
 
-  @Input() selectOptions: { value: string; label: string }[] = [];
+  @Input() selectOptions: SelectOption[] = [];
   @Input() label = '';
   @Input() inputType: 'number' | 'text' | 'select' = 'text';
   @Input() size: 'tiny' | 'small' | 'medium' | 'big' | 'huge' = 'medium';

@@ -28,7 +28,6 @@ export class PropositionsOnVersesComponent {
       )
       .subscribe({
         next: (themesOnPropositions) => {
-          console.log('themesOnPropositions', themesOnPropositions);
           if (!propositionOnVerse.proposition) {
             propositionOnVerse.proposition = {
               PropositionId: propositionOnVerse.propositionId,
