@@ -8,10 +8,9 @@ describe('PropositionsOnVersesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PropositionsOnVersesComponent]
-    })
-    .compileComponents();
-    
+      imports: [PropositionsOnVersesComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(PropositionsOnVersesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

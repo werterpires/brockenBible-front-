@@ -1,1 +1,50 @@
-<p>themes works!</p>
+<div class="themes">
+  <div *ngFor="let theme of themes" class="theme">
+    <img
+      class="trash-icon"
+      src="assets/icons/trashIcon.svg"
+      alt="Deletar"
+      (click)="deleteTheme(theme.themeId)"
+    />
+    <p>{{ theme.themeText }}</p>
+  </div>
+  <img
+    class="plus-icon"
+    src="assets/icons/plusIcon.svg"
+    alt="Mais"
+    (click)="creating = true"
+  />
+</div>
+<ng-container *ngIf="creating">
+  <app-custom-form
+    (cancelEmmitter)="creating = false"
+    (saveEmmitter)="createTheme()"
+  >
+    <div class="form-section">
+      <app-custom-input
+        [label]="'Texto do tema'"
+        [(ngModel)]="createThemeData.themeText"
+        [inputType]="'text'"
+        placeholder="Tema 1"
+        [size]="'huge'"
+        [customValidators]="[
+          validators.minMaxLength(5, 150),
+          validators.required()
+        ]"
+      >
+      </app-custom-input>
+      <app-custom-input
+        [label]="'Descrição do tema'"
+        [(ngModel)]="createThemeData.themeDescription"
+        [inputType]="'text'"
+        placeholder="Tema 1"
+        [size]="'huge'"
+        [customValidators]="[
+          validators.minMaxLength(5, 510),
+          validators.required()
+        ]"
+      >
+      </app-custom-input>
+    </div>
+  </app-custom-form>
+</ng-container>

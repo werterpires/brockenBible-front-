@@ -13,6 +13,7 @@
       <ng-container *ngIf="verse.propositionsOnVerse">
         <app-propositions-on-verses
           [propositionsOnVerses]="verse.propositionsOnVerse"
+          [verseId]="verse.verseId"
         ></app-propositions-on-verses>
       </ng-container>
       <ng-container *ngIf="verse.originalsOnVerse">

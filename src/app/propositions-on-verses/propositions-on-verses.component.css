@@ -1,4 +1,5 @@
 .propositions-on-verse {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -6,6 +7,7 @@
 }
 
 .proposition-on-verse {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -24,4 +26,19 @@
 
 .proposition-on-verse:hover {
   background-color: var(--dark-hover);
+}
+
+.plus-icon {
+  position: absolute;
+  right: -25px;
+  top: 2px;
+
+  width: 30px;
+  cursor: pointer;
+
+  transition: 0.3s ease-in-out all;
+}
+
+.plus-icon:hover {
+  transform: rotate(180deg);
 }

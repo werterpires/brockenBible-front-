@@ -1,4 +1,5 @@
 .themes-on-propositions {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -6,6 +7,7 @@
 }
 
 .theme-on-proposition {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -20,4 +22,15 @@
   font-weight: normal;
   transition: 0.3s ease-in-out all;
   line-height: 19px;
+}
+
+.plus-icon {
+  position: absolute;
+  right: -25px;
+  top: 2px;
+
+  width: 30px;
+  cursor: pointer;
+
+  transition: 0.3s ease-in-out all;
 }

@@ -1,11 +1,5 @@
 <div class="versions">
   <div *ngFor="let version of versions" class="version">
-    <img
-      class="trash-icon"
-      src="assets/icons/trashIcon.svg"
-      alt="Deletar"
-      (click)="deleteVersion(version.versionId)"
-    />
     <p (click)="selectVersion(version)">{{ version.versionName }}</p>
   </div>
   <img

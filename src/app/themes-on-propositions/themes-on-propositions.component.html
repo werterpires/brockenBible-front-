@@ -5,4 +5,31 @@
   >
     <p>{{ themeOnProposition.theme?.themeText }}</p>
   </div>
+  <img
+    class="plus-icon"
+    src="assets/icons/plusIcon.svg"
+    alt="Mais"
+    (click)="creating = true"
+  />
 </div>
+
+<ng-container *ngIf="creating">
+  <app-custom-form
+    (cancelEmmitter)="creating = false"
+    (saveEmmitter)="addThemetoProposition()"
+  >
+    <div class="form-section">
+      <app-custom-input
+        [customValidators]="[
+          validators.required(),
+          validators.minMaxLength(5, 255)
+        ]"
+        [(ngModel)]="addThemeOnPropositionData.themeText"
+        [inputType]="'select'"
+        [label]="'Texto do tema'"
+        [placeholder]="'Houve um princípio.'"
+        [size]="'huge'"
+      ></app-custom-input>
+    </div>
+  </app-custom-form>
+</ng-container>

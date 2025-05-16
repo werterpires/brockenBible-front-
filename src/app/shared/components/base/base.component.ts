@@ -19,5 +19,9 @@ export class BaseComponent {
       name: 'Versões',
       route: '/versoes',
     },
+    {
+      name: 'Temas',
+      route: '/themes',
+    },
   ];
 }

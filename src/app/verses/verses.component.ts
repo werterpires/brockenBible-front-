@@ -54,6 +54,7 @@ export class VersesComponent {
       .getPropositionsOnVersesByVerseId(verse.verseId)
       .subscribe({
         next: (propositionsOnVerse) => {
+          console.log(propositionsOnVerse);
           verse.propositionsOnVerse = propositionsOnVerse;
           this.selectedVerse = verse;
         },
