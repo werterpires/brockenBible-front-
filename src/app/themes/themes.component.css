@@ -1,0 +1,42 @@
+.themes {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  flex-wrap: wrap;
+  padding: 15px;
+  width: fit-content;
+  max-width: 80vw;
+}
+
+.theme {
+  display: flex;
+}
+
+.plus-icon {
+  position: absolute;
+  right: -25px;
+  top: 2px;
+
+  width: 30px;
+  cursor: pointer;
+
+  transition: 0.3s ease-in-out all;
+}
+
+.plus-icon:hover {
+  transform: rotate(180deg);
+}
+
+.trash-icon {
+  /* position: absolute;
+  right: 1px;
+  top: 1px; */
+  width: 20px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out all;
+}
+
+.trash-icon:hover {
+  transform: rotate(360deg);
+}

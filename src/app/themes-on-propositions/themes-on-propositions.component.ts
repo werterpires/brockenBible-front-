@@ -22,10 +22,10 @@ import { SelectOption } from '../shared/components/custom-input/types';
   styleUrl: './themes-on-propositions.component.css',
 })
 export class ThemesOnPropositionsComponent {
-  addThemeOnPropositionData: any;
   addThemetoProposition() {
     throw new Error('Method not implemented.');
   }
+
   @Input() themesOnPropositions: ThemeOnProposition[] = [];
   validators = validators;
   creating = false;

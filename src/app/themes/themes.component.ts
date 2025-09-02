@@ -28,13 +28,34 @@ export class ThemesComponent {
 
   constructor(private readonly themesService: ThemesService) {}
 
-  deleteTheme(themeId: number) {}
+  ngOnInit() {
+    this.getThemes();
+  }
+
+  deleteTheme(themeId: number) {
+    this.themesService.deleteTheme(themeId).subscribe({
+      next: () => {
+        this.themes = this.themes.filter((theme) => theme.themeId !== themeId);
+      },
+    });
+  }
   createTheme() {
     this.themesService.createTheme(this.createThemeData).subscribe({
       next: (theme) => {
         this.themes.push(theme);
         this.creating = false;
         this.createThemeData = { ...utils.createThemeData };
+      },
+    });
+  }
+
+  getThemes() {
+    this.themesService.getThemes().subscribe({
+      next: (themes) => {
+        this.themes = themes;
+      },
+      error: (error) => {
+        throw error;
       },
     });
   }

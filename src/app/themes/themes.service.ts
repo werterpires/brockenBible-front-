@@ -18,4 +18,22 @@ export class ThemesService {
         })
       );
   }
+
+  getThemes(): Observable<Theme[]> {
+    return this.httpClient.get<Theme[]>('http://localhost:3000/themes').pipe(
+      catchError((error: HttpErrorResponse) => {
+        throw error;
+      })
+    );
+  }
+
+  deleteTheme(themeId: number): Observable<void> {
+    return this.httpClient
+      .delete<void>(`http://localhost:3000/themes/${themeId}`)
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          throw error;
+        })
+      );
+  }
 }
